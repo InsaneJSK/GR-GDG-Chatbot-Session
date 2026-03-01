@@ -1,3 +1,5 @@
+"""A module to create a language model client using the langchain_groq library."""
+
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
 from langchain_core.messages import HumanMessage, AIMessage
@@ -8,12 +10,13 @@ def get_llm(
         temperature: float = 1.0,
         max_tokens: int = 256
 ) -> ChatGroq:
-    llm = ChatGroq(
+    """Create and return a ChatGroq client with the specified parameters."""
+    llm_model = ChatGroq(
         model=model,
         temperature=temperature,
         max_tokens=max_tokens
     )
-    return llm
+    return llm_model
 
 if __name__ == "__main__":
     llm = get_llm()
