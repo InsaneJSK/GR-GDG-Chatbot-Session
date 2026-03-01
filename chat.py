@@ -1,7 +1,10 @@
+"""A simple command-line chatbot interface for Monkey D. Luffy from One Piece."""
+
 from llm import get_llm
 from prompt import get_luffy_prompt
 
 def main():
+    """Run the Luffy chatbot in the command line."""
     llm = get_llm()
     prompt = get_luffy_prompt()
     print("Welcome to the luffy chatbot")

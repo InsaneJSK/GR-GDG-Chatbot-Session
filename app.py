@@ -1,3 +1,5 @@
+"""A Streamlit app that creates a chatbot interface for Monkey D. Luffy from One Piece."""
+
 import streamlit as st
 from llm import get_llm
 from prompt import get_luffy_prompt
@@ -27,13 +29,16 @@ if user_input:
         st.markdown(user_input)
 
     with st.spinner("Luffy is thinking..."):
-        result = st.session_state.chain.invoke({"user_input": user_input, "history": st.session_state.messages})
+        result = st.session_state.chain.invoke({
+            "user_input": user_input,
+            "history": st.session_state.messages
+        })
 
     if hasattr(result, "content"):
-        response_text = result.content
+        RESPONSE_TEXT = result.content
     else:
-        response_text = str(result)
+        RESPONSE_TEXT = str(result)
 
-    st.session_state.messages.append(("assistant", response_text))
+    st.session_state.messages.append(("assistant", RESPONSE_TEXT))
     with st.chat_message("assistant"):
-        st.markdown(response_text)
+        st.markdown(RESPONSE_TEXT)

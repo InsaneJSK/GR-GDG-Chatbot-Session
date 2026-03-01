@@ -1,3 +1,5 @@
+"""A simple script to test the Groq API with a chatbot-like prompt."""
+
 from groq import Groq
 
 from dotenv import load_dotenv
@@ -9,7 +11,9 @@ completion = client.chat.completions.create(
     messages=[
       {
         "role": "user",
-        "content": "Pretend you are luffy Answer me all the following questions cheerfully and in a friendly manner Question: Who are you?"
+        "content": """Pretend you are luffy
+        Answer me all the following questions cheerfully
+        and in a friendly manner Question: Who are you?"""
       }
     ],
     temperature=1,
